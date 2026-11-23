@@ -9,7 +9,7 @@ Implementación en Node.js de las cuestiones del caso práctico `performance.pdf
 3. **Modelo MVA multiclase abierto:** tiempos de respuesta, utilizaciones, carga máxima, comparación de mezclas de usuarios y de configuraciones de servidores (con la penalización de Seidmann).
 4. **Elasticidad:** función predictiva g(N, λ), controlador Hill Climbing, función de utilidad μ(t) y comparación con un mecanismo de elasticidad ideal.
 
-Todos los resultados (tablas, gráficas e informe) salen de la ejecución del programa. No hay datos escritos a mano.
+Todos los resultados (tablas y gráficas) salen de la ejecución del programa. No hay datos escritos a mano.
 
 ---
 
@@ -17,9 +17,8 @@ Todos los resultados (tablas, gráficas e informe) salen de la ejecución del pr
 
 | Herramienta | Para qué | Comprobar |
 |---|---|---|
-| Node.js 18 o superior | Cálculos y experimentos, generación del informe | `node --version` |
+| Node.js 18 o superior | Cálculos y experimentos | `node --version` |
 | Python 3 con matplotlib | Gráficas | `python -c "import matplotlib"` |
-| Paquete npm `docx` | Solo para generar el informe Word | se instala con `npm install docx` |
 
 El cálculo (`src/`) no necesita ninguna dependencia externa.
 
@@ -41,7 +40,7 @@ node src/ejecutar.js
 python graficas/generar_graficas.py
 ```
 
-
+---
 
 ## Cómo comprobar que funciona
 
@@ -71,7 +70,7 @@ El programa no tiene más aleatoriedad que el ruido de la carga λ(t) y la parti
 ## Estructura del proyecto
 
 ```
-CASO PRACTICA 7/
+service-performance-elasticity/
 ├── src/
 │   ├── parametros.js      Datos de entrada: matrices A y B, demandas D, mezclas, SLA, parámetros
 │   ├── calculos.js        Visitas (ec. 2), carga λ_r, MVA multiclase abierto, carga máxima
@@ -81,11 +80,8 @@ CASO PRACTICA 7/
 │   └── ejecutar.js        Lanza todos los experimentos y guarda los resultados
 ├── graficas/
 │   ├── generar_graficas.py
-│   └── fig*.png           Figuras del informe
-├── informe/
-│   └── generar_informe.js Construye el informe Word a partir de los resultados
-├── resultados/            CSV y resumen.json (se generan al ejecutar)
-├── Informe_Sistemas_Elasticidad_Danny_Carrera.docx
+│   └── fig*.png           Figuras generadas a partir de los resultados
+├── resultados/            CSV y resumen.json (se crea al ejecutar; no está en el repositorio)
 └── README.md
 ```
 
@@ -122,7 +118,7 @@ CASO PRACTICA 7/
 
 ## Cambiar parámetros
 
-Todos los parámetros están en `src/parametros.js`: matrices de transición, demandas, mezclas, paso de λ, umbral de utilización, SLA, límite de servidores, perfil de carga, pesos de la utilidad y márgenes. Después de cambiarlos, repetir los pasos 1, 2 y 3.
+Todos los parámetros están en `src/parametros.js`: matrices de transición, demandas, mezclas, paso de λ, umbral de utilización, SLA, límite de servidores, perfil de carga, pesos de la utilidad y márgenes. Después de cambiarlos, repetir los pasos 1 y 2.
 
 ---
 
